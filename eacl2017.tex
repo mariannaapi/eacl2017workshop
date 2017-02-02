@@ -1,0 +1,94 @@
+%
+% File eacl2017.tex
+%
+%% Based on the style files for ACL-2016
+%% Based on the style files for ACL-2015, with some improvements
+%%  taken from the NAACL-2016 style
+%% Based on the style files for ACL-2014, which were, in turn,
+%% Based on the style files for ACL-2013, which were, in turn,
+%% Based on the style files for ACL-2012, which were, in turn,
+%% based on the style files for ACL-2011, which were, in turn, 
+%% based on the style files for ACL-2010, which were, in turn, 
+%% based on the style files for ACL-IJCNLP-2009, which were, in turn,
+%% based on the style files for EACL-2009 and IJCNLP-2008...
+
+%% Based on the style files for EACL 2006 by 
+%%e.agirre@ehu.es or Sergi.Balari@uab.es
+%% and that of ACL 08 by Joakim Nivre and Noah Smith
+
+\documentclass[11pt]{article}
+\usepackage{eacl2017}
+\usepackage{times}
+\usepackage{url}
+\usepackage{latexsym}
+
+\eaclfinalcopy % Uncomment this line for the final submission
+%\def\eaclpaperid{***} %  Enter the acl Paper ID here
+
+%\setlength\titlebox{5cm}
+% You can expand the titlebox if you need extra space
+% to show all the authors. Please do not make the titlebox
+% smaller than 5cm (the original size); we will check this
+% in the camera-ready version and ask you to change it back.
+
+\newcommand\BibTeX{B{\sc ib}\TeX}
+
+%\title{Using word sense as a filter to improve lexical substitution}
+%\title{Word sense can improve lexical substitution rankings}
+\title{Word sense filtering improves lexical substitution rankings}
+
+\author{First Author \\
+  Affiliation / Address line 1 \\
+  Affiliation / Address line 2 \\
+  Affiliation / Address line 3 \\
+  {\tt email@domain} \\\And
+  Second Author \\
+  Affiliation / Address line 1 \\
+  Affiliation / Address line 2 \\
+  Affiliation / Address line 3 \\
+  {\tt email@domain} \\}
+
+\date{}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+
+
+\end{abstract}
+
+\section{Introduction}
+
+Word senses have always been difficult to define and pin down \cite{kilgarriff1997don,erk2009investigations}, and recent successes of embedding-based models in various semantic tasks are further challenging people's belief in them. Why bother to identify senses if even humans do not manage to come to an agreement on their nature and number, and simple word-embedding models yield so good results without using any sense representations? 
+%can yield similar or better results in tasks as disambiguation approaches? 
+
+Word-based models have indeed been shown to efficiently perform various semantic tasks even though they conflate the different meanings of words into a single representation. Departing from the assumption that capturing polysemy %sense distinctions 
+could help, several works have focused on creating sense-specific embeddings. A common approach %to developping multiple embeddings per word type is by %pre-clustering the contexts of each token into a fixed number of senses for each word, and then relabelling each word token with the clustered sense before learning embeddings \cite{reisinger-mooney:2010:NAACLHLT,huang-EtAl:2012:ACL20122}. 
+is to cluster the contexts of each token of a word in a corpus into a fixed number of senses, and then to relabel each word token with the clustered sense before learning embeddings \cite{reisinger-mooney:2010:NAACLHLT,huang-EtAl:2012:ACL20122}. \newcite{Liu:2015:TWE:2886521.2886657} learn sense/topic specific embeddings by combining neural frameworks with LDA topic models. \newcite{iacobacci-pilehvar-navigli:2015:ACL-IJCNLP} learn sense embeddings by first disambiguating the instances of words in a corpus using a state-of-the-art WSD system and then processing the disambiguated text with the word2vec toolkit \cite{Mikolovetal2013} to produce continuous represenations of word senses based on the distributional information obtained from the annotated corpus. %Moving from word to sense embeddings generally improves their performance in word and relational similarity tasks. 
+However, \newcite{li-jurafsky:2015:EMNLP} show that although multi-sense embeddings give improved performance in tasks such as semantic similarity for words and sentences, semantic relation identification and part-of-speech tagging, they don't help in others, like sentiment analysis and named entity extraction. 
+
+We show how a sense inventory optimized for substitutability can improve the substitute rankings provided by these models. We show how senses optimized for substitutability %induced from paraphrase data 
+can help vector- and embedding-based lexical substitution models. Lexical substitution is a task where systems are required to predict substitutes  for target word instances which preserve their meaning in specific contexts \cite{mccarthy-navigli:07}. In our experiments we use two sense-agnostic lexical substitution models: a syntax-based vector-space model \cite{apidianaki:2016:EMNLP2016} and a word-embedding model \cite{melamud-levy-dagan:2015:VSM-NLP}. Contrary to \newcite{faruqui-EtAl:2015:NAACL-HLT} who use semantic lexicons %such as WordNet, FrameNet and the Paraphrase Database 
+to refine vector space represenations,\footnote{In this work, relational information from WordNet, FrameNet and the Paraphrase Database served to encourage linked words to have similar vector representations.} we do not use senses to modify the word's vectors but rather to improve their results in a lexical substitution task. 
+
+% The old debate around word senses, their nature and utility in applications has recently been enriched with considerations on their abandomnent in favor of simpler word-based representations. 
+%Simple word embedding %models have been shown to efficiently perform complex semantic processing tasks without need for semantic lexicons and disambiguation techniques. 
+%Given the  difficulty to identify senses (Kilgarriff) and the multiplicity of possible representations, why bother with them if word-based models can perform the same tasks as efficiently? 
+%However, in spite of the increasing popularity of distributed representations, several works show that their quality can be improved using senses and paraphrases from semantic lexicons. 
+
+%In this paper, we explore the performance of vector-space and embedding models on a lexical substitution task, with and without using senses. Our models come from 
+
+
+\section{Lexical substitution models}
+
+We experiment with syntax-based vector-space models of lexical substitution \cite{apidianaki:2016:EMNLP2016} and a word-embedding model \cite{melamud-levy-dagan:2015:VSM-NLP}. 
+Given a word in context, lexical substitution models aim to rank the available substitutes for the word so that good substitutes be ranked higher and  bad substitutes, not carrying the sense of the word in this context, be found low in the ranking.
+
+
+
+
+\bibliography{eacl2017}
+\bibliographystyle{eacl2017}
+
+
+\end{document}

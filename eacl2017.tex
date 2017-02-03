@@ -50,7 +50,7 @@
 
 %\title{Using word sense as a filter to improve lexical substitution}
 %\title{Word sense can improve lexical substitution rankings}
-\title{Word Sense Filtering Improves Lexical Substitution} % rankings}
+\title{Word Sense Filtering Improves Embedding-Based Lexical Substitution} % rankings}
 
 \author{First Author \\
   Affiliation / Address line 1 \\
@@ -322,34 +322,34 @@ We compare the extent to which our optimized sense inventories improve lexical s
 	\begin{tabular}{p{1.7cm} *{2}{p{1.6cm}} p{1.3cm}}
 		\hline
 		Sense  Inventory & Avg \# of Words per Target & Avg \# of Clusters per Target &  CoInCo NMI \\ \hline
-		WordNet+ & 29.7 & 4.5 & 0.418 \\
-		TWSI & 16.7 & 2.42 & 0.294 \\
-		PPDBClus & 132.8 & 13.7 & 0.253 \\
+		WordNet+ & 29.7 & 4.5 & 0.252 \\
+		%TWSI & 16.7 & 2.42 & 0.294 \\
+		PPDBClus & 132.8 & 13.7 & 0.254 \\
 	\end{tabular}
-	\caption{Characteristics and substitutability (NMI) of each sense inventory used in our study}
+	\caption{Characteristics and substitutability (NMI) of the baseline sense inventories used in our study}
 	\label{tab:nmi}
 \end{table}
 
 We  assess the substitutability of these sense inventories with respect to the human-annotated substitutes in the CoInCo dataset. %rom the Concepts In Context (CoInCo) \cite{kremer2014substitutes} dataset, containing over 15K sentences corresponding to nearly 4K unique target words.
-The size and characteristics of each sense inventory are given in Table \ref{tab:nmi}. For each sense inventory, we evaluate its normalized mutual information over all the sentences in the CoInCo dataset (ignoring targets that do not appear in the sense inventory). We find that the substitutability of WordNet+ is significantly higher than that of PPDBClus or TWSI, and that the crowdsourced TWSI is more substitutable than the automatically-generated PPDBClus.
+The size and characteristics of each sense inventory are given in Table \ref{tab:nmi}. For each sense inventory, we evaluate its normalized mutual information over all the sentences in the CoInCo dataset (ignoring targets that do not appear in the sense inventory, and sentences for which there are less than two words overlapping with the sense inventory vocabulary). We find that the substitutability scores of WordNet and PPDBClus are similar.
 
 \begin{table*}[th]
     \centering
     \scalebox{0.8}{
-  \begin{tabular}{c||c|c||c|c}
-& \multicolumn{2}{c}{Syn.VSM} & \multicolumn{2}{c}{AddCos (cwin=1)} \\ \hline
-& Unfiltered GAP & Oracle GAP & Unfiltered GAP & Oracle GAP \\ \hline
-PPDBClus & 0.528 & 0.661 & 0.533 & 0.656 \\ \cdashline{1-5}[1pt/2pt]
-WordNet & 0.528 & 0.655 & 0.533 & 0.651 \\ \hline
-Choose-K: \# WN Synsets \footnotesize{(avg)} & 0.528 & 0.639 & 0.533 & 0.636  \\ \cdashline{1-5}[1pt/2pt]
-Choose-K: \# WN Synsets \footnotesize{(max, no co-clustering)} & 0.528 & 0.695* & 0.533 & 0.69*  \\ \cdashline{1-5}[1pt/2pt]
-Choose-K: \# WN Synsets \footnotesize{(max, co-clustering)} & 0.528 & 0.69** & 0.533 & 0.683  \\ \hline
-Choose-K: Optimize NMI  \footnotesize{(avg)} & 0.528 & 0.668 & 0.533 & 0.662 \\ \cdashline{1-5}[1pt/2pt]
-Choose-K: Optimize NMI  \footnotesize{(max, no co-clustering)} & 0.528 & 0.719 *** & 0.533 & 0.714 ****  \\ \cdashline{1-5}[1pt/2pt]
-Choose K: Optimize NMI \footnotesize{(max, co-clustering)} & 0.528 & 0.718 ***** & 0.533 & 0.71 ******  \\
+  \begin{tabular}{c||c||c|c||c|c}
+& & \multicolumn{2}{c}{Syn.VSM} & \multicolumn{2}{c}{AddCos (cwin=1)} \\ \hline
+&  NMI & Unfiltered GAP & Oracle GAP & Unfiltered GAP & Oracle GAP \\ \hline
+PPDBClus & 0.254 & 0.528 & 0.661 & 0.533 & 0.656 \\ \cdashline{1-6}[1pt/2pt]
+WordNet & 0.252 & 0.528 & 0.655 & 0.533 & 0.651 \\ \hline
+Choose-K: \# WN Synsets \footnotesize{(avg)} & 0.205 & 0.528 & 0.639 & 0.533 & 0.636  \\ \cdashline{1-6}[1pt/2pt]
+Choose-K: \# WN Synsets \footnotesize{(max, no co-clustering)} & 0.250* & 0.528 & 0.695* & 0.533 & 0.690*  \\ \cdashline{1-6}[1pt/2pt]
+Choose-K: \# WN Synsets \footnotesize{(max, co-clustering)} & 0.241** & 0.528 & 0.690** & 0.533 & 0.683**  \\ \hline
+Choose-K: Optimize NMI  \footnotesize{(avg)} & 0.282 & 0.528 & 0.668 & 0.533 & 0.662 \\ \cdashline{1-6}[1pt/2pt]
+Choose-K: Optimize NMI  \footnotesize{(max, no co-clustering)} & 0.331* & 0.528 & 0.719 * & 0.533 & 0.714 ***  \\ \cdashline{1-6}[1pt/2pt]
+Choose K: Optimize NMI \footnotesize{(max, co-clustering)} & 0.314** & 0.528 & 0.718 **** & 0.533 & 0.71 **  \\
 \end{tabular}
 }
-  \caption{\footnotesize{GAP scores of the unfiltered and best sense-filtered rankings produced by the Syn.VSM and AddCos models. Best performing configurations are: * Min PPDB Score 2.0, cluster PP's only, use PP-PP mask; ** Min PPDB Score 2.0, use PP-PP mask only; *** Min PPDB Score 2.0, cluster PP's only, use PP-PP mask; **** Min PPDB Score 1.5, cluster PP's only, use PP-PP mask}; ***** Min PPDB Score 2.0, use PP-PP, Syn-Syn masks only; ****** Min PPDB Score 2.0, use PP-PP mask only}
+  \caption{\footnotesize{NMI of resulting sense inventories, and GAP scores of the unfiltered and best sense-filtered rankings produced by the Syn.VSM and AddCos models. Configurations for the best-performing sense inventories were: * Min PPDB Score 2.0, cluster PP's only, use PP-PP mask; ** Min PPDB Score 2.0, co-clustering, use PP-PP mask only; *** Min PPDB Score 1.5, cluster PP's only, use PP-PP mask}; **** Min PPDB Score 2.0, co-clustering, use PP-PP, Syn-Syn masks only}
   \label{tab:GAP1}
 \end{table*}
 
@@ -425,12 +425,15 @@ and the co-clustering method in Table \ref{tab:GAP1}.
 %using the paraphrase-only clustering method with generic embeddings, the paraphrase-only method with retrofitted embeddings, and the co-clustering method in Table \ref{tab:GAP1}. 
 The average unfiltered GAP score for the Syn.VSM rankings over the CoInCo test portion is 0.528.\footnote{The score reported by \newcite{apidianaki:2016:EMNLP2016} for the Syn.VSM model with the XXL PPDB paraphrases was 0.56. The difference in scores is due to excluding from our clustering experiments target words that did not have at least 10 sentences in CoInCo.}  All baseline and clustered sense inventories are capable of improving this GAP score when we use the best sense as a filter. Syntactic models generally give very good results with smaller paraphrase sets \cite{kremer-EtAl:2014:EACL} but their performance seems to degrade when they need to deal with larger and noisier substitute sets \cite{apidianaki:2016:EMNLP2016}. Our results suggest that finding the most appropriate sense of a target word in context \textit{can} improve their lexical substitution results. Similarly, the GAP score of the unfiltered AddCos rankings is much lower than after filtering by any baseline or clustered sense inventory, showing that lexical subsitutition rankings based on word-embeddings can also be improved using senses. 
 
-To assess the impact of the NMI-based optimization procedure on the results, we compare the performance of two sense inventories: one where the number of clusters (\textit{k}) for a target word is defined through NMI optimization  and another one, where \textit{k} is equal to the number of synsets available for the target word in WordNet. For both the Syn.VSM and AddCos ranking models, filtering using the sense inventory with the NMI-optimized \textit{k} outperforms the results obtained when the inventory with \textit{k} equal to the number of  synsets is used. 
+To assess the impact of the NMI-based optimization procedure on the results, we compare the performance of two sense inventories: one where the number of clusters (\textit{k}) for a target word is defined through NMI optimization  and another one, where \textit{k} is equal to the number of synsets available for the target word in WordNet. We find that for both the Syn.VSM and AddCos ranking models, filtering using the sense inventory with the NMI-optimized \textit{k} outperforms the results obtained when the inventory with \textit{k} equal to the number of  synsets is used. 
+
+Further, we find that the NMI substitutability score is a good indicator of how much improvement we see in GAP score due to oracle sense filtering. We calculated the Pearson correlation of a sense inventory's NMI with its oracle GAP score to be 0.644. This suggests that NMI is a reasonable measure of substitutability.
 
 %n in \cite{apidianaki:2016:EMNLP2016}, the syntactic model does very well with smaller PPDB packages but its performance lowers a lot when it has to deal with noisy paraphrase sets. 
 
-Finally, we find that for all methods, applying a PPDBScore Threshold is an effective way of removing noisy, non-substitutable paraphrases from the lexical substitution rankings. This supports the finding of \newcite{apidianaki:2016:EMNLP2016}, who showed that the PPDB2.0 Score itself is an effective lexical substitution ranking metric when large and noisy paraphrase substitute sets are involved.
+We find that for all methods, applying a PPDBScore Threshold is an effective way of removing noisy, non-substitutable paraphrases from the lexical substitution rankings. This supports the finding of \newcite{apidianaki:2016:EMNLP2016}, who showed that the PPDB2.0 Score itself is an effective lexical substitution ranking metric when large and noisy paraphrase substitute sets are involved.
 
+Finally, we discover that co-clustering with WordNet did not produce an improvement in NMI or GAP score over clustering paraphrases alone. This could suggest that the added structure from WordNet did not improve overall substitutability of the resulting sense inventories, or that our co-clustering method did not effectively incorporate useful structural information from WordNet.
 
 
 \section{Conclusion}

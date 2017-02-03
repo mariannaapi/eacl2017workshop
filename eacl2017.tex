@@ -309,12 +309,12 @@ The second set of rankings comes from the AddCos model of \newcite{melamud-levy-
 
 %We evaluate three baseline sense inventories. 
 
-We compare the extent to which our optimized sense inventories improve lexical substitution rankings to the results of three baseline sense inventories.
+We compare the extent to which our optimized sense inventories improve lexical substitution rankings to the results of two baseline sense inventories.
 
 \begin{itemize}
 \item\textbf{WordNet+}: a sense inventory formed from WordNet 3.0. For each CoInCo target word that appears in WordNet, we take its sense clusters to be its synsets, plus lemmas belonging to hypernyms and hyponyms of each synset. 
 \item\textbf{PPDBClus}: a much larger, abeit noisier, sense inventory obtained by automatically clustering words in the PPDB XXL package. To obtain this sense inventory we clustered paraphrases for all targets in the CoInCo dataset using the method outlined in \newcite{cocos-callisonburch:2016:N16-1}, with PPDB2.0 Score serving as the similarity metric.
-\item\textbf{TWSI}: the Turk Bootstrap Word Sense Inventory v2 (TWSI) \cite{Biemann:2013} is a crowdsourced sense inventory constructed specifically for substitutability. 
+%\item\textbf{TWSI}: the Turk Bootstrap Word Sense Inventory v2 (TWSI) \cite{Biemann:2013} is a crowdsourced sense inventory constructed specifically for substitutability. 
 \end{itemize}
 
 \begin{table}[t]
@@ -398,9 +398,9 @@ Sense filtering is intended to boost the  rank of substitutes that belong to the
 
 First, given a target and sentence from the CoInCo test set, we obtain the PPDB paraphrases for the target word and rank them using the Syn.VSM and the AddCos models. We calculate the overall \textit{unfiltered} GAP score on the CoInCo test set for each model as the average GAP over sentences.
 
-Next, we evaluate the ability of a sense inventory to improve the GAP score through filtering. We use an oracle experiment to choose the cluster that groups the highest number of ranked substitutes. We find the maximum GAP score achievable by adding a large number (10000) to the ranking model's score for words \textit{belonging to a single sense}. 
-%We use an oracle experiment to find the maximum GAP score achievable by adding a large number (10000) to the ranking model's score for words \textit{belonging to a single sense}. 
-If the sense inventory corresponds well to substitutability, we should expect this filtering to improve the ranking by eliminating proposed substitutes that do not fall within the correct sense cluster.
+Next, we evaluate the ability of a sense inventory to improve the GAP score through filtering. We implement sense filtering by adding a large number (10000) to the ranking model's score for words \textit{belonging to a single sense}. We use an oracle experiment to find the cluster that maximally improves the GAP score using this sense filtering method. 
+%We use an oracle experiment to choose the cluster that groups the highest number of ranked substitutes. We find the maximum GAP score achievable by adding a large number (10000) to the ranking model's score for words \textit{belonging to a single sense}. %We use an oracle experiment to find the maximum GAP score achievable by adding a large number (10000) to the ranking model's score for words \textit{belonging to a single sense}. 
+If the sense inventory corresponds well to substitutability, we should expect this filtering to improve the ranking by downgrading proposed substitutes that do not fall within the correct sense cluster.
 
 we used an oracle disambiguation experiment where the cluster grouping the highest number of ranked substitutes was selected. The task of finding the most appropriate sense in context still remains, however 
 
@@ -437,7 +437,7 @@ Finally, we find that for all methods, applying a PPDBScore Threshold is an effe
 
 We have shown that in spite of the high performance of vector-based models, lexical substitution can still benefit from word senses. We have defined a substitutability metric and proposed a method for automatically creating sense inventories optimized for substitutability. The number of sense clusters in an optimized inventory and their contents are congruent with lexical substitution annotations in a development set. Using the best fitting cluster in each context as a filter over the rankings produced by vector-space models boosts good substitutes and improves their scores in a lexical substitution task. 
 
-For choosing the cluster that best fits a context, we used an oracle disambiguation experiment where the cluster that groups the highest number of ranked substitutes, and achieves the highest GAP score, was selected. The task of finding the most appropriate sense in context still remains, however the improvement in lexical substitution results shows that word sense induction and disambiguation can still benefit lexical substitution.   
+For choosing the cluster that best fits a context, we used an oracle experiment which finds the maximum GAP score achievable by a sense by boosting the ranking model's score for words \textit{belonging to a single sense}. The cluster that achieved the highest GAP score was selected. The task of finding the most appropriate sense in context still remains, however the improvement in lexical substitution results shows that word sense induction and disambiguation can still benefit lexical substitution.   
 
 %Limitation: We have only shown that lexical substitution results \textit{can} be improved using an oracle experiment. The task of finding the most appropriate sense in context still remains.
 

@@ -78,7 +78,7 @@ The role of word sense induction and disambiguation in lexical substitution has 
 
 \section{Introduction}
 
-Word senses have always been difficult to define and pin down \cite{kilgarriff1997don,erk2009investigations}, and recent successes of embedding-based models in various semantic tasks are further challenging people's belief in them. Why bother to identify senses if even humans do not manage to come to an agreement on their nature and number, and if simple word-embedding models yield good results without using any sense representations? 
+Word senses have always been difficult to define and pin down \cite{kilgarriff1997don,ErketalCL2013}, and recent successes of embedding-based models in various semantic tasks are further challenging people's belief in them. Why bother to identify senses if even humans do not manage to come to an agreement on their nature and number, and if simple word-embedding models yield good results without needing any sense representations? 
 %can yield similar or better results in tasks as disambiguation approaches? 
 
 Word-based models are indeed  successful in various semantic tasks even though they conflate the different meanings of words into a single representation. Departing from the assumption that capturing polysemy %sense distinctions 
@@ -86,7 +86,7 @@ could further improve their performance, several works have focused on creating 
 %to developping multiple embeddings per word type is by %pre-clustering the contexts of each token into a fixed number of senses for each word, and then relabelling each word token with the clustered sense before learning embeddings \cite{reisinger-mooney:2010:NAACLHLT,huang-EtAl:2012:ACL20122}. 
 A common approach is to cluster the contexts in which the words appear in a corpus into senses %into a fixed number of clusters/senses %of each token of a word in a corpus into a fixed number of senses, 
 and relabel each word token with the clustered sense before learning the embeddings  \cite{reisinger-mooney:2010:NAACLHLT,huang-EtAl:2012:ACL20122}. %\newcite{Liu:2015:TWE:2886521.2886657} learn sense specific embeddings using %by combining neural frameworks with LDA topic models.
-\newcite{iacobacci-pilehvar-navigli:2015:ACL-IJCNLP} disambiguate the words in a corpus using a state-of-the-art WSD system and then produce continuous represenations of word senses based on the distributional information obtained from the annotated corpus. %before learning the embeddings. 
+\newcite{iacobacci-pilehvar-navigli:2015:ACL-IJCNLP} disambiguate the words in a corpus using a state-of-the-art WSD system and then produce continuous representations of word senses based on the distributional information obtained from the annotated corpus. %before learning the embeddings. 
 %Similarly, \newcite{iacobacci-pilehvar-navigli:2015:ACL-IJCNLP} first disambiguate the instances of words in a corpus using a state-of-the-art WSD system and then process the disambiguated text with the word2vec toolkit \cite{Mikolovetal2013} to produce continuous represenations of word senses based on the distributional information obtained from the annotated corpus. 
 Moving from word to sense embeddings generally improves their performance in word and relational similarity tasks but is not beneficial in all settings. 
 \newcite{li-jurafsky:2015:EMNLP} show that although multi-sense embeddings give improved performance in tasks such as semantic similarity, semantic relation identification and part-of-speech tagging, they don't help in others, like sentiment analysis and named entity extraction \cite{li-jurafsky:2015:EMNLP}. %Apart from learning sense-specific representations, 
@@ -340,16 +340,16 @@ The size and characteristics of each sense inventory are given in Table \ref{tab
     \centering
     \scalebox{0.8}{
   \begin{tabular}{c||c||c|c||c|c}
-& & \multicolumn{2}{c}{Syn.VSM} & \multicolumn{2}{c}{AddCos (cwin=1)} \\ \hline
+\multicolumn{2}{c}{} & \multicolumn{2}{c}{Syn.VSM} & \multicolumn{2}{c}{AddCos (cwin=1)} \\ \cline{3-6}
 &  NMI & Unfiltered GAP & Oracle GAP & Unfiltered GAP & Oracle GAP \\ \hline
-PPDBClus & 0.254 & 0.528 & 0.661 & 0.533 & 0.656 \\ \cdashline{1-6}[1pt/2pt]
-WordNet & 0.252 & 0.528 & 0.655 & 0.533 & 0.651 \\ \hline
-Choose-K: \# WN Synsets \footnotesize{(avg)} & 0.205 & 0.528 & 0.639 & 0.533 & 0.636  \\ \cdashline{1-6}[1pt/2pt]
-Choose-K: \# WN Synsets \footnotesize{(max, no co-clustering)} & 0.250* & 0.528 & 0.695* & 0.533 & 0.690*  \\ \cdashline{1-6}[1pt/2pt]
-Choose-K: \# WN Synsets \footnotesize{(max, co-clustering)} & 0.241** & 0.528 & 0.690** & 0.533 & 0.683**  \\ \hline
-Choose-K: Optimize NMI  \footnotesize{(avg)} & 0.282 & 0.528 & 0.668 & 0.533 & 0.662 \\ \cdashline{1-6}[1pt/2pt]
-Choose-K: Optimize NMI  \footnotesize{(max, no co-clustering)} & 0.331* & 0.528 & 0.719 * & 0.533 & 0.714 ***  \\ \cdashline{1-6}[1pt/2pt]
-Choose K: Optimize NMI \footnotesize{(max, co-clustering)} & 0.314** & 0.528 & 0.718 **** & 0.533 & 0.71 **  \\
+PPDBClus & 0.254 & \multirow{8}{1cm}{0.528} & 0.661 &  \multirow{8}{1cm}{0.533} & 0.656 \\ \cdashline{1-2}[1pt/2pt]\cdashline{4-4}[1pt/2pt]\cdashline{6-6}[1pt/2pt]
+WordNet & 0.252 &  & 0.655 &  & 0.651 \\  \cline{1-2}\cline{4-4}\cline{6-6}
+Choose-K: \# WN Synsets \footnotesize{(avg)} & 0.205 &  & 0.639 &  & 0.636  \\ \cdashline{1-2}[1pt/2pt]\cdashline{4-4}[1pt/2pt]\cdashline{6-6}[1pt/2pt]
+Choose-K: \# WN Synsets \footnotesize{(max, no co-clustering)} & 0.250* &  & 0.695* &  & 0.690*  \\ \cdashline{1-2}[1pt/2pt]\cdashline{4-4}[1pt/2pt]\cdashline{6-6}[1pt/2pt]
+Choose-K: \# WN Synsets \footnotesize{(max, co-clustering)} & 0.241** &  & 0.690** &  & 0.683**  \\ \cline{1-2}\cline{4-4}\cline{6-6}
+Choose-K: Optimize NMI  \footnotesize{(avg)} & 0.282 &  & 0.668 &  & 0.662 \\ \cdashline{1-2}[1pt/2pt]\cdashline{4-4}[1pt/2pt]\cdashline{6-6}[1pt/2pt]
+Choose-K: Optimize NMI  \footnotesize{(max, no co-clustering)} & 0.331* &  & 0.719 * &  & 0.714 ***  \\ \cdashline{1-2}[1pt/2pt]\cdashline{4-4}[1pt/2pt]\cdashline{6-6}[1pt/2pt]
+Choose K: Optimize NMI \footnotesize{(max, co-clustering)} & 0.314** &  & 0.718 **** &  & 0.71 **  \\ 
 \end{tabular}
 }
   \caption{\footnotesize{NMI of resulting sense inventories, and GAP scores of the unfiltered and best sense-filtered rankings produced by the Syn.VSM and AddCos models. Configurations for the best-performing sense inventories were: * Min PPDB Score 2.0, cluster PP's only, use PP-PP mask; ** Min PPDB Score 2.0, co-clustering, use PP-PP mask only; *** Min PPDB Score 1.5, cluster PP's only, use PP-PP mask}; **** Min PPDB Score 2.0, co-clustering, use PP-PP, Syn-Syn masks only}
@@ -430,7 +430,7 @@ The average unfiltered GAP score for the Syn.VSM rankings over the CoInCo test p
 
 To assess the impact of the NMI-based optimization procedure on the results, we compare the performance of two sense inventories: one where the number of clusters (\textit{k}) for a target word is defined through NMI optimization  and another one, where \textit{k} is equal to the number of synsets available for the target word in WordNet. We find that for both the Syn.VSM and AddCos ranking models, filtering using the sense inventory with the NMI-optimized \textit{k} outperforms the results obtained when the inventory with \textit{k} equal to the number of  synsets is used. 
 
-Further, we find that the NMI substitutability score is a good indicator of how much improvement we see in GAP score due to oracle sense filtering. We calculated the Pearson correlation of a sense inventory's NMI with its oracle GAP score to be 0.644. This suggests that NMI is a reasonable measure of substitutability.
+Furthermore, we find that the NMI substitutability score is a good indicator of how much improvement we see in GAP score due to oracle sense filtering. We calculated the Pearson correlation of a sense inventory's NMI with its oracle GAP score to be 0.644. This suggests that NMI is a reasonable measure of substitutability.
 
 %n in \cite{apidianaki:2016:EMNLP2016}, the syntactic model does very well with smaller PPDB packages but its performance lowers a lot when it has to deal with noisy paraphrase sets. 
 

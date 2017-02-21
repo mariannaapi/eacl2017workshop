@@ -342,7 +342,7 @@ The size and characteristics of each sense inventory are given in Table \ref{tab
     \scalebox{0.8}{
   \begin{tabular}{c||c||c|c||c|c}
 \multicolumn{2}{c}{} & \multicolumn{2}{c}{Syn.VSM} & \multicolumn{2}{c}{AddCos (cwin=1)} \\ \cline{3-6}
-&  NMI & Unfiltered GAP & Oracle GAP & Unfiltered GAP & Oracle GAP \\ \hline
+&  $subst_{CoInCo}$ & Unfiltered GAP & Oracle GAP & Unfiltered GAP & Oracle GAP \\ \hline
 PPDBClus & 0.254 & \multirow{8}{1cm}{0.528} & 0.661 &  \multirow{8}{1cm}{0.533} & 0.656 \\ \cdashline{1-2}[1pt/2pt]\cdashline{4-4}[1pt/2pt]\cdashline{6-6}[1pt/2pt]
 WordNet & 0.252 &  & 0.655 &  & 0.651 \\  \cline{1-2}\cline{4-4}\cline{6-6}
 Choose-K: \# WN Synsets \footnotesize{(avg)} & 0.205 &  & 0.639 &  & 0.636  \\ \cdashline{1-2}[1pt/2pt]\cdashline{4-4}[1pt/2pt]\cdashline{6-6}[1pt/2pt]
@@ -353,11 +353,30 @@ Choose-K: Optimize NMI  \footnotesize{(max, no co-clustering)} & 0.331* &  & 0.7
 Choose K: Optimize NMI \footnotesize{(max, co-clustering)} & 0.314** &  & 0.718 **** &  & 0.71 **  \\ 
 \end{tabular}
 }
-  \caption{\footnotesize{NMI of resulting sense inventories, and GAP scores of the unfiltered and best sense-filtered rankings produced by the Syn.VSM and AddCos models. Configurations for the best-performing sense inventories were: * Min PPDB Score 2.0, cluster PP's only, use PP-PP mask; ** Min PPDB Score 2.0, co-clustering, use PP-PP mask only; *** Min PPDB Score 1.5, cluster PP's only, use PP-PP mask}; **** Min PPDB Score 2.0, co-clustering, use PP-PP, Syn-Syn masks only}
-  \label{tab:GAP1}
+  \caption{\footnotesize{Substitutablity (NMI) of resulting sense inventories, and GAP scores of the unfiltered and best sense-filtered rankings produced by the Syn.VSM and AddCos models, for the CoInCo annotated dataset. Configurations for the best-performing sense inventories were: * Min PPDB Score 2.0, cluster PP's only, use PP-PP mask; ** Min PPDB Score 2.0, co-clustering, use PP-PP mask only; *** Min PPDB Score 1.5, cluster PP's only, use PP-PP mask}; **** Min PPDB Score 2.0, co-clustering, use PP-PP, Syn-Syn masks only}
+  \label{tab:GAP-coinco}
 \end{table*}
 
 
+\begin{table*}[th]
+	\centering
+	\scalebox{0.8}{
+		\begin{tabular}{c||c||c|c||c|c}
+			\multicolumn{2}{c}{} & \multicolumn{2}{c}{Syn.VSM} & \multicolumn{2}{c}{AddCos (cwin=1)} \\ \cline{3-6}
+			&  $subst_{Semeval}$ & Unfiltered GAP & Oracle GAP & Unfiltered GAP & Oracle GAP \\ \hline
+			PPDBClus & 0.357 & \multirow{5}{1cm}{0.673} & 0.855 &  \multirow{5}{1cm}{0.410} & 0.656 \\ \cdashline{1-2}[1pt/2pt]\cdashline{4-4}[1pt/2pt]\cdashline{6-6}[1pt/2pt]
+			WordNet & 0.291 &  & 0.774 &  & 0.651 \\  \cline{1-2}\cline{4-4}\cline{6-6}
+%			Choose-K: \# WN Synsets \footnotesize{(avg)} & 0.205 &  & 0.639 &  & 0.636  \\ \cdashline{1-2}[1pt/2pt]\cdashline{4-4}[1pt/2pt]\cdashline{6-6}[1pt/2pt]
+%			Choose-K: \# WN Synsets \footnotesize{(max, no co-clustering)} & 0.250* &  & 0.695* &  & 0.690*  \\ \cdashline{1-2}[1pt/2pt]\cdashline{4-4}[1pt/2pt]\cdashline{6-6}[1pt/2pt]
+%			Choose-K: \# WN Synsets \footnotesize{(max, co-clustering)} & 0.241** &  & 0.690** &  & 0.683**  \\ \cline{1-2}\cline{4-4}\cline{6-6}
+			Choose-K: Optimize NMI  \footnotesize{(avg)} & 0.367 &  & 0.841 &  & 0.569 \\ \cdashline{1-2}[1pt/2pt]\cdashline{4-4}[1pt/2pt]\cdashline{6-6}[1pt/2pt]
+			Choose-K: Optimize NMI  \footnotesize{(max, no co-clustering)} & 0.448* &  & 0.917*  &  & 0.626*   \\ \cdashline{1-2}[1pt/2pt]\cdashline{4-4}[1pt/2pt]\cdashline{6-6}[1pt/2pt]
+			Choose K: Optimize NMI \footnotesize{(max, co-clustering)} & 0.449** &  & 0.906*** &  & 0.612****  \\ 
+		\end{tabular}
+	}
+	\caption{\footnotesize{Substitutablity (NMI) of resulting sense inventories, and GAP scores of the unfiltered and best sense-filtered rankings produced by the Syn.VSM and AddCos models, for the CoInCo annotated dataset. Configurations for the best-performing sense inventories were: * Min PPDB Score 2.31, cluster PP's only, use PP-PP mask; ** Min PPDB Score 2.54, co-clustering, use PP-SYN mask only; *** Min PPDB Score 2.54, co-clustering, use PP-SYN mask only; **** Min PPDB Score 2.31, co-clustering, use PP-SYN mask only.}}
+	\label{tab:GAP-semeval}
+\end{table*}
 
 Finally, we wish to estimate the impact of the NMI-based  optimization procedure (Section \ref{optimk}) on the quality of the senses used for filtering. We compare the performance of the optimized sense inventory, where the number of clusters, \textit{k}, for a target word is defined through NMI optimization (called `Choose-K: Optimize NMI'), to  an inventory where \textit{k} equals the number of synsets available for the target word in WordNet (called `Choose-K: \#WN Synsets). 
 
@@ -388,7 +407,7 @@ Finally, we wish to estimate the impact of the NMI-based  optimization procedure
 		            
 	\end{tabular}
 	\caption{Average oracle sense-filtered GAP score over all sentences in the CoInCo test set for each sense inventory. The unfiltered GAP score for the CoInCo test data with the \newcite{apidianaki:2016:EMNLP2016} rankings is 0.527.\footnote{The score reported for this model in \cite{apidianaki:2016:EMNLP2016} was 0.56. The difference is due to excluding from our clustering experiments target words that did not have at least 10 sentences in CoInCo.} }
-	\label{tab:GAP1}
+	\label{tab:GAP-coinco}
 \end{table*}
 \end{comment}
 
@@ -425,8 +444,8 @@ We calculate the maximum sense-restricted GAP score for the inventories produced
 \section{Results}
 
 We report the unfiltered and best sense-filtered GAP scores achieved using the paraphrase-only clustering method %with generic embeddings %, the paraphrase-only method with retrofitted embeddings, 
-and the co-clustering method in Table \ref{tab:GAP1}. 
-%using the paraphrase-only clustering method with generic embeddings, the paraphrase-only method with retrofitted embeddings, and the co-clustering method in Table \ref{tab:GAP1}. 
+and the co-clustering method in Table \ref{tab:GAP-coinco}. 
+%using the paraphrase-only clustering method with generic embeddings, the paraphrase-only method with retrofitted embeddings, and the co-clustering method in Table \ref{tab:GAP-coinco}. 
 The average unfiltered GAP score for the Syn.VSM rankings over the CoInCo test portion is 0.528.\footnote{The score reported by \newcite{apidianaki:2016:EMNLP2016} for the Syn.VSM model with the XXL PPDB paraphrases was 0.56. The difference in scores is due to excluding from our clustering experiments target words that did not have at least 10 sentences in CoInCo.}  All baseline and clustered sense inventories are capable of improving this GAP score when we use the best sense as a filter. Syntactic models generally give very good results with smaller paraphrase sets \cite{kremer-EtAl:2014:EACL} but their performance seems to degrade when they need to deal with larger and noisier substitute sets \cite{apidianaki:2016:EMNLP2016}. Our results suggest that finding the most appropriate sense of a target word in context \textit{can} improve their lexical substitution results. Similarly, the GAP score of the unfiltered AddCos rankings is much lower than after filtering by any baseline or clustered sense inventory, showing that lexical subsitutition rankings based on word-embeddings can also be improved using senses. 
 
 To assess the impact of the NMI-based optimization procedure on the results, we compare the performance of two sense inventories: one where the number of clusters (\textit{k}) for a target word is defined through NMI optimization  and another one, where \textit{k} is equal to the number of synsets available for the target word in WordNet. We find that for both the Syn.VSM and AddCos ranking models, filtering using the sense inventory with the NMI-optimized \textit{k} outperforms the results obtained when the inventory with \textit{k} equal to the number of  synsets is used. 

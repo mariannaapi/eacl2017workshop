@@ -1,0 +1,203 @@
+\begin{thebibliography}{}
+
+\bibitem[\protect\citename{Apidianaki}2016]{apidianaki:2016:EMNLP2016}
+Marianna Apidianaki.
+\newblock 2016.
+\newblock Vector-space models for {PPDB} paraphrase ranking in context.
+\newblock In {\em Proceedings of EMNLP}, pages 2028--2034, Austin, Texas.
+
+\bibitem[\protect\citename{Camacho-Collados \bgroup et al.\egroup
+  }2015]{camachocollados-pilehvar-navigli:2015:NAACL-HLT}
+Jos\'{e} Camacho-Collados, Mohammad~Taher Pilehvar, and Roberto Navigli.
+\newblock 2015.
+\newblock {NASARI}: a {N}ovel {A}pproach to a {S}emantically-{A}ware
+  {R}epresentation of {I}tems.
+\newblock In {\em Proceedings of NAACL/HLT 2015}, pages 567--577, Denver,
+  Colorado.
+
+\bibitem[\protect\citename{Cocos and
+  Callison-Burch}2016]{cocos-callisonburch:2016:N16-1}
+Anne Cocos and Chris Callison-Burch.
+\newblock 2016.
+\newblock Clustering paraphrases by word sense.
+\newblock In {\em Proceedings of NAACL/HLT 2016}, pages 1463--1472, San Diego,
+  California.
+
+\bibitem[\protect\citename{Erk \bgroup et al.\egroup }2013]{ErketalCL2013}
+Katrin Erk, Diana McCarthy, and Nicholas Gaylord.
+\newblock 2013.
+\newblock Measuring word meaning in context.
+\newblock {\em Computational Linguistics}, 39(3):511--554, 9.
+
+\bibitem[\protect\citename{Faruqui \bgroup et al.\egroup
+  }2015]{faruqui-EtAl:2015:NAACL-HLT}
+Manaal Faruqui, Jesse Dodge, Sujay~Kumar Jauhar, Chris Dyer, Eduard Hovy, and
+  Noah~A. Smith.
+\newblock 2015.
+\newblock Retrofitting {W}ord {V}ectors to {S}emantic {L}exicons.
+\newblock In {\em Proceedings of NAACL/HLT}, Denver, Colorado.
+
+\bibitem[\protect\citename{Fellbaum}1998]{fellbaum98wordnet}
+Christiane Fellbaum, editor.
+\newblock 1998.
+\newblock {\em {WordNet: an electronic lexical database}}.
+\newblock MIT Press.
+
+\bibitem[\protect\citename{Ganitkevitch \bgroup et al.\egroup
+  }2013]{ganitkevitch-EtAl:2013:NAACL}
+Juri Ganitkevitch, Benjamin VanDurme, and Chris Callison-Burch.
+\newblock 2013.
+\newblock {PPDB}: The {P}araphrase {D}atabase.
+\newblock In {\em Proceedings of NAACL}, Atlanta, Georgia.
+
+\bibitem[\protect\citename{Huang \bgroup et al.\egroup
+  }2012]{huang-EtAl:2012:ACL20122}
+Eric Huang, Richard Socher, Christopher Manning, and Andrew Ng.
+\newblock 2012.
+\newblock Improving {W}ord {R}epresentations via {G}lobal {C}ontext and
+  {M}ultiple {W}ord {P}rototypes.
+\newblock In {\em Proceedings of the ACL (Volume 1: Long Papers)}, pages
+  873--882, Jeju Island, Korea.
+
+\bibitem[\protect\citename{Iacobacci \bgroup et al.\egroup
+  }2015]{iacobacci-pilehvar-navigli:2015:ACL-IJCNLP}
+Ignacio Iacobacci, Mohammad~Taher Pilehvar, and Roberto Navigli.
+\newblock 2015.
+\newblock Sens{E}mbed: {L}earning {S}ense {E}mbeddings for {W}ord and
+  {R}elational {S}imilarity.
+\newblock In {\em Proceedings of the ACL/IJCNLP}, pages 95--105, Beijing,
+  China.
+
+\bibitem[\protect\citename{Kilgarriff}1997]{kilgarriff1997don}
+Adam Kilgarriff.
+\newblock 1997.
+\newblock I don't believe in word senses.
+\newblock {\em Computers and the Humanities}, 31(2):91--113.
+
+\bibitem[\protect\citename{Kishida}2005]{kishida2005property}
+Kazuaki Kishida.
+\newblock 2005.
+\newblock {\em Property of average precision and its generalization: An
+  examination of evaluation indicator for information retrieval experiments}.
+\newblock National Institute of Informatics Tokyo, Japan.
+
+\bibitem[\protect\citename{Kremer \bgroup et al.\egroup
+  }2014]{kremer-EtAl:2014:EACL}
+Gerhard Kremer, Katrin Erk, Sebastian Pad\'{o}, and Stefan Thater.
+\newblock 2014.
+\newblock What {S}ubstitutes {T}ell {U}s - {A}nalysis of an ``{A}ll-{W}ords"
+  {L}exical {S}ubstitution {C}orpus.
+\newblock In {\em Proceedings of EACL}, pages 540--549, Gothenburg, Sweden.
+
+\bibitem[\protect\citename{Li and Jurafsky}2015]{li-jurafsky:2015:EMNLP}
+Jiwei Li and Dan Jurafsky.
+\newblock 2015.
+\newblock Do {M}ulti-{S}ense {E}mbeddings {I}mprove {N}atural {L}anguage
+  {U}nderstanding?
+\newblock In {\em Proceedings of the EMNLP}, pages 1722--1732, Lisbon,
+  Portugal.
+
+\bibitem[\protect\citename{Marneffe \bgroup et al.\egroup }2006]{mcdm:06}
+M.~Marneffe, B.~Maccartney, and C.~Manning.
+\newblock 2006.
+\newblock Generating {T}yped {D}ependency {P}arses from {P}hrase {S}tructure
+  {P}arses.
+\newblock In {\em Proceedings of LREC-2006}, Genoa, Italy.
+
+\bibitem[\protect\citename{McCarthy and Navigli}2007]{mccarthy-navigli:07}
+Diana McCarthy and Roberto Navigli.
+\newblock 2007.
+\newblock {SemEval-2007 Task 10: English Lexical Substitution Task}.
+\newblock In {\em Proceedings of SemEval}, pages 48--53, Prague, Czech
+  Republic.
+
+\bibitem[\protect\citename{Melamud \bgroup et al.\egroup
+  }2015]{melamud-levy-dagan:2015:VSM-NLP}
+Oren Melamud, Omer Levy, and Ido Dagan.
+\newblock 2015.
+\newblock A {S}imple {W}ord {E}mbedding {M}odel for {L}exical {S}ubstitution.
+\newblock In {\em Proceedings of the 1st Workshop on Vector Space Modeling for
+  Natural Language Processing}, pages 1--7, Denver, Colorado.
+
+\bibitem[\protect\citename{Mikolov \bgroup et al.\egroup
+  }2013a]{mikolov2013efficient}
+Tomas Mikolov, Kai Chen, Greg Corrado, and Jeffrey Dean.
+\newblock 2013a.
+\newblock Efficient estimation of word representations in vector space.
+\newblock {\em arXiv preprint arXiv:1301.3781}.
+
+\bibitem[\protect\citename{Mikolov \bgroup et al.\egroup
+  }2013b]{mikolov2013distributed}
+Tomas Mikolov, Ilya Sutskever, Kai Chen, Greg~S Corrado, and Jeff Dean.
+\newblock 2013b.
+\newblock Distributed representations of words and phrases and their
+  compositionality.
+\newblock In {\em Advances in neural information processing systems}, pages
+  3111--3119.
+
+\bibitem[\protect\citename{Napoles \bgroup et al.\egroup
+  }2012]{napoles2012annotated}
+Courtney Napoles, Matthew Gormley, and Benjamin Van~Durme.
+\newblock 2012.
+\newblock Annotated {G}igaword.
+\newblock In {\em Proceedings of the Joint Workshop on Automatic Knowledge Base
+  Construction and Web-scale Knowledge Extraction (AKBC-WEKEX)}, pages 95--100,
+  Montreal, Canada.
+
+\bibitem[\protect\citename{Pavlick \bgroup et al.\egroup
+  }2015]{pavlick-EtAl:2015:ACL-IJCNLP3}
+Ellie Pavlick, Pushpendre Rastogi, Juri Ganitkevitch, Benjamin Van~Durme, and
+  Chris Callison-Burch.
+\newblock 2015.
+\newblock {PPDB} 2.0: {B}etter paraphrase ranking, fine-grained entailment
+  relations, word embeddings, and style classification.
+\newblock In {\em Proceedings of ACL/IJCNLP}, pages 425--430, Beijing, China.
+
+\bibitem[\protect\citename{{\v R}eh{\r u}{\v r}ek and Sojka}2010]{ismu:884893}
+Radim {\v R}eh{\r u}{\v r}ek and Petr Sojka.
+\newblock 2010.
+\newblock {Software Framework for Topic Modelling with Large Corpora}.
+\newblock In {\em {Proceedings of the LREC 2010 Workshop on New Challenges for
+  NLP Frameworks}}, pages 45--50, Valletta, Malta.
+
+\bibitem[\protect\citename{Reisinger and
+  Mooney}2010]{reisinger-mooney:2010:NAACLHLT}
+Joseph Reisinger and Raymond~J. Mooney.
+\newblock 2010.
+\newblock Multi-{P}rototype {V}ector-{S}pace {M}odels of {W}ord {M}eaning.
+\newblock In {\em Proceedings of HLT/NAACL}, pages 109--117, Los Angeles,
+  California.
+
+\bibitem[\protect\citename{Strehl and Ghosh}2002]{strehl2002cluster}
+Alexander Strehl and Joydeep Ghosh.
+\newblock 2002.
+\newblock Cluster ensembles---a knowledge reuse framework for combining
+  multiple partitions.
+\newblock {\em Journal of machine learning research}, 3(Dec):583--617.
+
+\bibitem[\protect\citename{Thater \bgroup et al.\egroup
+  }2011]{thater-furstenau-pinkal:2011:IJCNLP-2011}
+Stefan Thater, Hagen F\"{u}rstenau, and Manfred Pinkal.
+\newblock 2011.
+\newblock Word {M}eaning in {C}ontext: A {S}imple and {E}ffective {V}ector
+  {M}odel.
+\newblock In {\em Proceedings of IJCNLP}, pages 1134--1143, Chiang Mai,
+  Thailand.
+
+\bibitem[\protect\citename{Vinh \bgroup et al.\egroup
+  }2009]{vinh2009information}
+Nguyen~Xuan Vinh, Julien Epps, and James Bailey.
+\newblock 2009.
+\newblock Information theoretic measures for clusterings comparison: is a
+  correction for chance necessary?
+\newblock In {\em Proceedings of the 26th Annual International Conference on
+  Machine Learning}, pages 1073--1080. ACM.
+
+\bibitem[\protect\citename{Yu and Shi}2003]{yu2003multiclass}
+Stella~X Yu and Jianbo Shi.
+\newblock 2003.
+\newblock Multiclass spectral clustering.
+\newblock In {\em Proceedings of International Conference on Computer Vision
+  (ICCV 03)}, pages 313--319. IEEE.
+
+\end{thebibliography}

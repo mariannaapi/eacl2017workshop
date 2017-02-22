@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  22 FEB 2017 06:39
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  22 FEB 2017 11:33
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -751,164 +751,148 @@ m/m/n/9 =
 
 LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <10.95> not available
 (Font)              Font shape `OT1/ptm/b/it' tried instead on input line 172.
-
-Underfull \vbox (badness 1331) has occurred while \output is active []
-
- [3]
+[3] Excluding 'comment' comment.
 <images/pp_syn_graph.pdf, id=26, 309.155pt x 388.45125pt>
 File: images/pp_syn_graph.pdf Graphic file (type pdf)
 
 <use images/pp_syn_graph.pdf>
-Package pdftex.def Info: images/pp_syn_graph.pdf used on input line 191.
+Package pdftex.def Info: images/pp_syn_graph.pdf used on input line 199.
 (pdftex.def)             Requested size: 113.81102pt x 143.00157pt.
 
 <images/pp_syn_mat_all.pdf, id=27, 355.3275pt x 360.34625pt>
 File: images/pp_syn_mat_all.pdf Graphic file (type pdf)
 
 <use images/pp_syn_mat_all.pdf>
-Package pdftex.def Info: images/pp_syn_mat_all.pdf used on input line 197.
+Package pdftex.def Info: images/pp_syn_mat_all.pdf used on input line 205.
 (pdftex.def)             Requested size: 163.88814pt x 166.20665pt.
 
 <images/pp_syn_mat_mask.pdf, id=28, 355.3275pt x 360.34625pt>
 File: images/pp_syn_mat_mask.pdf Graphic file (type pdf)
 
 <use images/pp_syn_mat_mask.pdf>
-Package pdftex.def Info: images/pp_syn_mat_mask.pdf used on input line 203.
+Package pdftex.def Info: images/pp_syn_mat_mask.pdf used on input line 211.
 (pdftex.def)             Requested size: 163.88814pt x 166.20665pt.
 
-Underfull \hbox (badness 3229) in paragraph at lines 204--204
+Underfull \hbox (badness 3229) in paragraph at lines 212--212
 []\OT1/ptm/m/n/9 (c) |Affin-ity ma-trix for in-put to clus-ter-
  []
 
 
-Underfull \hbox (badness 3439) in paragraph at lines 204--204
+Underfull \hbox (badness 3439) in paragraph at lines 212--212
 \OT1/ptm/m/n/9 ing al-go-rithm, en-forc-ing the paraphrase-
  []
 
 
-Underfull \hbox (badness 1107) in paragraph at lines 204--204
+Underfull \hbox (badness 1107) in paragraph at lines 212--212
 \OT1/ptm/m/n/9 paraphrase ($\OML/ztmcm/m/it/9 E[]$\OT1/ptm/m/n/9 ) and paraphra
 se-synset
  []
 
 
-Underfull \hbox (badness 1314) in paragraph at lines 219--219
+Underfull \hbox (badness 1314) in paragraph at lines 227--227
 [][]\OT1/ptm/m/n/9 We don't use the NASARI em-bed-dings (Camacho-
  []
 
 [4 <./images/pp_graph.pdf> <./images/pp_mat_all.pdf> <./images/pp_mat_mask.pdf>
 ]
-Underfull \hbox (badness 2012) in paragraph at lines 227--228
+Underfull \hbox (badness 2012) in paragraph at lines 235--236
 []\OT1/ptm/m/n/10.95 For the synset-synset links, we de-fine the
  []
 
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [5 <./images/pp_syn_graph.pdf> <./images/pp_syn_mat_all.pdf> <./images/pp_syn_
-mat_mask.pdf>]
-Underfull \hbox (badness 2837) in paragraph at lines 240--241
+[5 <./images/pp_syn_graph.pdf> <./images/pp_syn_mat_all.pdf> <./images/pp_syn_m
+at_mask.pdf>]
+Underfull \hbox (badness 2837) in paragraph at lines 247--248
 \OT1/ptm/m/n/10.95 sense in-ven-to-ries im-prove lex-i-cal sub-sti-tu-tion
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 247--247
+Underfull \hbox (badness 10000) in paragraph at lines 253--253
 [][]$\OT1/pcr/m/n/9 http : / / catalog . ldc . upenn . edu /
  []
 
 
-Underfull \hbox (badness 2837) in paragraph at lines 259--260
+Underfull \hbox (badness 2837) in paragraph at lines 265--266
 \OT1/ptm/m/n/10.95 sense in-ven-to-ries im-prove lex-i-cal sub-sti-tu-tion
  []
 
-LaTeX Font Info:    Try loading font information for OMS+ptm on input line 262.
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 268.
 
 (/usr/local/texlive/2014/texmf-dist/tex/latex/psnfss/omsptm.fd
 File: omsptm.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 262.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 268.
  [6]
-Underfull \hbox (badness 10000) in paragraph at lines 275--275
+Underfull \hbox (badness 10000) in paragraph at lines 276--276
 []|\OT1/ptm/m/n/10.95 Sense
  []
 
 
-Underfull \hbox (badness 1142) in paragraph at lines 275--275
+Underfull \hbox (badness 1142) in paragraph at lines 276--276
 []|\OT1/ptm/m/n/10.95 Avg # of
  []
 
 
-Underfull \hbox (badness 1142) in paragraph at lines 275--275
+Underfull \hbox (badness 1142) in paragraph at lines 276--276
 []|\OT1/ptm/m/n/10.95 Avg # of
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 275--275
+Underfull \hbox (badness 10000) in paragraph at lines 276--276
 \OT1/ptm/m/n/10.95 Clus-ters
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 275--275
+Underfull \hbox (badness 10000) in paragraph at lines 276--276
 []|\OT1/ptm/m/n/10.95 CoInCo
  []
 
 
-Overfull \hbox (2.27754pt too wide) in paragraph at lines 275--275
-[]|\OT1/ptm/m/n/10.95 SemEval
- []
-
-
-Overfull \hbox (4.01157pt too wide) in paragraph at lines 275--276
+Overfull \hbox (5.32129pt too wide) in paragraph at lines 274--280
  [][] 
  []
 
 
-Overfull \hbox (10.64188pt too wide) in paragraph at lines 298--299
+Overfull \hbox (10.64188pt too wide) in paragraph at lines 302--303
  [][] 
  []
 
 
-Overfull \hbox (13.64346pt too wide) in paragraph at lines 316--317
+Overfull \hbox (9.50594pt too wide) in paragraph at lines 320--321
  [][] 
  []
 
 
-Underfull \hbox (badness 2065) in paragraph at lines 335--336
+Underfull \hbox (badness 2065) in paragraph at lines 340--341
 []\OT1/ptm/m/n/10.95 We cal-cu-late the max-i-mum sense-restricted
  []
 
 
-Underfull \hbox (badness 1281) in paragraph at lines 340--341
+Underfull \hbox (badness 1281) in paragraph at lines 345--346
 \OT1/ptm/m/n/10.95 When co-clustering, we try all com-bi-na-
  []
 
 [7]
-Underfull \hbox (badness 3088) in paragraph at lines 350--350
+Underfull \hbox (badness 3088) in paragraph at lines 355--355
 [][]\OT1/ptm/m/n/9 The score re-ported by Apid-i-anaki (2016) for the
  []
 
 
-Underfull \hbox (badness 1377) in paragraph at lines 350--351
+Underfull \hbox (badness 1377) in paragraph at lines 355--356
 []\OT1/ptm/m/n/10.95 The av-er-age un-fil-tered GAP scores for the
  []
 
 
-Underfull \hbox (badness 1297) in paragraph at lines 356--357
+Underfull \hbox (badness 1297) in paragraph at lines 361--362
 []\OT1/ptm/m/n/10.95 Furthermore, we find that the NMI sub-sti-
  []
 
 
-Underfull \vbox (badness 2828) has occurred while \output is active []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [8]
-Underfull \hbox (badness 1033) in paragraph at lines 360--361
+Underfull \hbox (badness 1033) in paragraph at lines 365--366
 []\OT1/ptm/m/n/10.95 Finally, we dis-cover that co-clustering with
- []
-
-
-Underfull \hbox (badness 1248) in paragraph at lines 375--376
-[]\OT1/ptm/m/n/10.95 This work has also been sup-ported by the
  []
 
 (./eacl2017.bbl [9]
@@ -943,7 +927,7 @@ ts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1
 utmb8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/urw/times/utmbi8a.pf
 b></usr/local/texlive/2014/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/lo
 cal/texlive/2014/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on eacl2017.pdf (10 pages, 206668 bytes).
+Output written on eacl2017.pdf (10 pages, 206712 bytes).
 PDF statistics:
  185 PDF objects out of 1000 (max. 8388607)
  136 compressed objects within 2 object streams

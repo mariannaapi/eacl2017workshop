@@ -95,8 +95,8 @@ We define a substitutability metric that quantifies the extent to which a sense 
 
 Given a sense inventory $C$, we can define the senses of a target word $t$ as a set of sense clusters, $C(t) = \{c_1, c_2, \dots c_k\}$, where each cluster contains words corresponding to a single sense of $t$. Intuitively, if a sense inventory corresponds with substitutability, then each sense cluster $c_i$ should have two qualities: first, words within $c_i$ should be interchangeable with $t$ in the same set of contexts; and second, $c_i$ should not be missing any words that are interchangeable in those same contexts. We therefore operationalize the definition of substitutability as follows. 
 
-We begin with two
-lexical substitution datasets, the ``Concepts in Context" (CoInCo) corpus \cite{kremer-EtAl:2014:EACL} and the SemEval2007 English Lexical Substitution Task dataset \cite{mccarthy-navigli:07}, each consisting of sentences where content words have been manually annotated with substitutes.\footnote{CoInCo contains over 15K sentences corresponding to nearly 4K unique content words. SemEval contains 2010 sentences corresponding to 205 unique content words} 
+We begin with a 
+lexical substitution dataset, the ``Concepts in Context" (CoInCo) corpus \cite{kremer-EtAl:2014:EACL} consisting of sentences where content words have been manually annotated with substitutes.\footnote{CoInCo contains over 15K sentences corresponding to nearly 4K unique content words.} 
 We then use normalized mutual information (NMI) \cite{strehl2002cluster} to quantify the level of agreement between the automatically generated sense clusters and human-suggested substitutes. NMI is an information theoretic measure of cluster quality. Given two clusterings $U$ and $V$ over a set of items, it measures how much each clustering reduces uncertainty about the other \cite{vinh2009information} in terms of their mutual information $I(U,V)$ and entropies $H(U), H(V)$:
 
 \begin{table}[t]
@@ -123,7 +123,7 @@ We then use normalized mutual information (NMI) \cite{strehl2002cluster} to quan
 
 Having defined a substitutability score, we now automatically generate word sense clusters from the Paraphrase Database that maximize it. The idea is to use the substitutability score to choose the best number of senses for each target word which will be the number of output clusters (\textit{k}) needed by our spectral clustering algorithm. 
 
-In order to perform this optimization, we first divide the CoInCo and SemEval datasets into development and test sets as follows. For CoInCo, we find all target words that have at least 10 sentences. For each of the 327 resulting targets, we randomly divide the corresponding sentences into 60\% development instances and 40\% test instances. The resulting development and test sets have 4061 and 2091 sentences respectively. For SemEval, we use the provided trial set of 300 sentences for development and test set of 1710 sentences for evaluation. We cluster the target words in the remaining CoInCo data and in the SemEval data, performing all optimization using the respective development portions, and running evaluation on the test portions.
+In order to perform this optimization, we first divide the CoInCo dataset into development and test sets as follows. We find all target words in the CoInCo dataset that have at least 10 sentences. For each of the 327 resulting targets, we randomly divide the corresponding sentences into 60\% development instances and 40\% test instances. The resulting development and test sets have 4061 and 2091 sentences respectively. We cluster the 327 target words in the resulting subset of CoInCo, performing all optimization using the development portion, and running evaluation on the test portion.
 
 \begin{comment}
 \subsection{Spectral clustering method}
@@ -172,7 +172,7 @@ More concretely, in the masked affinity matrix, we set each entry $a_{ij}$ for w
 \subsubsection{Optimizing \textit{k}}
 \label{optimk}
 
-Because spectral clustering requires the number of output clusters, $k$, to be specified as input, for each target word we run the clustering algorithm for a range of $k$ between 1 and the minimum of ($n$,  20). We then choose the \textit{k} that maximizes the NMI of the resulting clusters with the human-annotated substitutes for that target from the applicable develpment dataset, as explained in Sections \ref{nmi} and \ref{optim}.
+Because spectral clustering requires the number of output clusters, $k$, to be specified as input, for each target word we run the clustering algorithm for a range of $k$ between 1 and the minimum of ($n$,  20). We then choose the \textit{k} that maximizes the NMI of the resulting clusters with the human-annotated substitutes for that target from the CoInCo develpment dataset, as explained in Sections \ref{nmi} and \ref{optim}.
 
 \subsection{Method variations}
 
@@ -185,6 +185,14 @@ two variations on the basic spectral clustering method to increase the score fur
 Each paraphrase pair in the PPDB is associated with a set of scores indicating the strength of the paraphrase relationship. The recently added PPDB2.0 Score \cite{pavlick-EtAl:2015:ACL-IJCNLP3} was calculated using a 
 supervised scoring model trained on human judgments of paraphrase quality.\footnote{The human judgments were used to fit a regression to the features available in {\sc ppdb} 1.0 plus numerous new features including cosine word embedding similarity, lexical overlap features, WordNet features and distributional similarity features.} 
 \newcite{apidianaki:2016:EMNLP2016} showed that the PPDB2.0 Score itself is a good metric for ranking substitution candidates in context, outperforming some vector space models when the number of candidates is high. With this in mind, we experimented with using a PPDB2.0 Score threshold to discard noisy PPDB XXL paraphrases prior to sense clustering. Our objective was to begin the clustering process with a \textit{clean} set of paraphrases for each target word, eliminating erroneous paraphrases that might pollute the substitutable sense clusters. We implemented PPDB score thresholds in a range from 0 to 2.5.
+
+\begin{comment}
+\subsubsection{Retrofitted Vectors}
+
+Our overall objective in clustering was to generate clusters that are fully substitutable. But the distributional similarity measure we used as input to the clustering algorithm is known to confuse \textit{semantic similarity} and \textit{conceptual association} \cite{hill2016simlex}, producing high similarity measurements between dissimilar words like antonyms \cite{mohammad2008computing,mrkvsic2016counter}. We sought a similarity metric that better captures substitutability. Therefore we also experimented with retrofitting the word embeddings to a semantic lexicon created from LexSub annotation data prior to clustering \cite{faruqui2014retrofitting}.
+
+The retrofitting method of \newcite{faruqui2014retrofitting} refines vector space representations of words using relational information from semantic lexicons (i.e. sets of similar words). Given any set of pre-trained word embeddings, it encourages words appearing within a lexicon group to move closer in vector space. We ran the retrofitting tool on our part-of-speech-specific word embeddings, using human-annotated substitutes from the TWSI\footnote{URL} and CoInCo (development portion) datasets as the input lexicon. The result is a set of word embeddings for which words that have been deemed 'substitutable' by human annotators are closer together. We then experiment with using the substitutability-retrofitted word embeddings (in place of the generic word embeddings) in our clustering model.
+\end{comment}
 
 \begin{figure*}[th]
 	\begin{subfigure}[t]{0.25\textwidth}
@@ -236,9 +244,7 @@ We now question whether it is possible to improve the rankings of current state-
 Assuming that we have a WSD oracle that is able to choose the most appropriate sense for a target word in context, this corresponds to nominating substitutes from the applicable sense cluster and elevating them in the list of ranked substitutes output by the state-of-the-art lexical substitution system. 
 If sense filtering successfully improves the quality of ranked substitutes, we can say that the sense inventory captures substitutability well. 
 
-
-We assess the extent to which our optimized sense inventories improve lexical substitution rankings using two sets of evaluation data. Our first test set is the test portion of the CoInCo subset defined in Section \ref{optim}. Recall that the test portion consists of 2091 annotated sentences for 327 target words. Our second test set is the SemEval test set, filtered to include only instances having one or more human-suggested substitutes in our sense inventory vocabulary. Our evaluation portion of the SemEval data includes 1178 of the 1710 test instances in the original dataset.   
-
+We assess the extent to which our optimized sense inventories improve lexical substitution rankings using two sets of evaluation data. Our first test set is the test portion of the CoInCo subset defined in Section \ref{optim}. Recall that the test portion consists of 2091 annotated sentences for 327 target words. In order to see how well our method generalizes to other datasets, we also construct sense clusters and evaluation data from the SemEval 2007 English Lexical Substitution Task dataset \cite{mccarthy-navigli:07}. In this case, we begin by clustering the PPDB XXL paraphrases for the 170 targets in the SemEval test dataset. We use the CoInCo development data to optimize substitutability for the 33 overlapping targets, and set the number of senses equal to the number of WordNet synsets for the remaining targets. To evaluate the SemEval targets, we then filter the SemEval test dataset to include only target words and sentences having human-annotated substitutes in the sense inventory vocabulary. We run evaluation using the remaining 1178 annotated sentences. 
 
 \subsection{Ranking Models}
 
@@ -259,26 +265,24 @@ The second set of rankings comes from the AddCos model of \newcite{melamud-levy-
 We compare the extent to which our optimized sense inventories improve lexical substitution rankings to the results of two baseline sense inventories.
 
 \begin{itemize}
-\item\textbf{WordNet+}: a sense inventory formed from WordNet 3.0. For each target word that appears in WordNet, we take its sense clusters to be its synsets, plus lemmas belonging to hypernyms and hyponyms of each synset. 
-\item\textbf{PPDBClus}: a much larger, abeit noisier, sense inventory obtained by automatically clustering words in the PPDB XXL package. To obtain this sense inventory we clustered paraphrases for all targets in the our test sets using the method outlined in \newcite{cocos-callisonburch:2016:N16-1}, with PPDB2.0 Score serving as the similarity metric. 
+\item\textbf{WordNet+}: a sense inventory formed from WordNet 3.0. For each CoInCo target word that appears in WordNet, we take its sense clusters to be its synsets, plus lemmas belonging to hypernyms and hyponyms of each synset. 
+\item\textbf{PPDBClus}: a much larger, abeit noisier, sense inventory obtained by automatically clustering words in the PPDB XXL package. To obtain this sense inventory we clustered paraphrases for all targets in the CoInCo dataset using the method outlined in \newcite{cocos-callisonburch:2016:N16-1}, with PPDB2.0 Score serving as the similarity metric. 
 \end{itemize}
 
 \begin{table}[t]
 	\centering
-	\scalebox{0.8}{
-	\begin{tabular}{p{1.7cm} *{2}{p{1.6cm}} p{1.3cm} p{1.3cm}}
+	\begin{tabular}{p{1.7cm} *{2}{p{1.6cm}} p{1.3cm}}
 		\hline
-		Sense  Inventory & Avg \# of Words per Target & Avg \# of Clusters per Target &  CoInCo NMI  & SemEval NMI \\ \hline
-		WordNet+ & 29.7 & 4.5 & 0.252 & 0.357\\
-		PPDBClus & 132.8 & 13.7 & 0.254 & 0.291\\
+		Sense  Inventory & Avg \# of Words per Target & Avg \# of Clusters per Target &  CoInCo NMI \\ \hline
+		WordNet+ & 29.7 & 4.5 & 0.252 \\
+		PPDBClus & 132.8 & 13.7 & 0.254 \\
 	\end{tabular}
-	}
 	\caption{Characteristics and substitutability (NMI) of the baseline sense inventories used in our study}
 	\label{tab:nmi}
 \end{table}
 
-We  assess the substitutability of these sense inventories with respect to the human-annotated substitutes in the CoInCo and SemEval datasets. 
-The size and characteristics of each sense inventory are given in Table \ref{tab:nmi}. For each sense inventory, we evaluate its normalized mutual information over all the sentences in each dataset (ignoring targets that do not appear in the sense inventory and sentences for which there are less than two words overlapping with the sense inventory vocabulary). We find that the substitutability scores of WordNet and PPDBClus are similar for the CoInCo annotations, and that WordNet has higher substitutability when evaluated over the SemEval annotations.
+We  assess the substitutability of these sense inventories with respect to the human-annotated substitutes in the CoInCo dataset. 
+The size and characteristics of each sense inventory are given in Table \ref{tab:nmi}. For each sense inventory, we evaluate its normalized mutual information over all the sentences in the CoInCo dataset (ignoring targets that do not appear in the sense inventory and sentences for which there are less than two words overlapping with the sense inventory vocabulary). We find that the substitutability scores of WordNet and PPDBClus are similar.
 
 \begin{table*}[th]
     \centering
@@ -309,16 +313,17 @@ Choose K: Optimize NMI \footnotesize{(max, co-clustering)} & 0.314** &  & 0.718 
 			&  $subst_{SemEval}$ & Unfiltered GAP & Oracle GAP & Unfiltered GAP & Oracle GAP \\ \hline
 			PPDBClus & 0.357 & \multirow{5}{1cm}{0.673} & 0.855 &  \multirow{5}{1cm}{0.410} & 0.634 \\ \cdashline{1-2}[1pt/2pt]\cdashline{4-4}[1pt/2pt]\cdashline{6-6}[1pt/2pt]
 			WordNet & 0.291 &  & 0.774 &  & 0.595 \\  \cline{1-2}\cline{4-4}\cline{6-6}
-			Choose-K: Optimize NMI  \footnotesize{(avg)} & 0.367 &  & 0.841 &  & 0.569 \\ \cdashline{1-2}[1pt/2pt]\cdashline{4-4}[1pt/2pt]\cdashline{6-6}[1pt/2pt]
-			Choose-K: Optimize NMI  \footnotesize{(max, no co-clustering)} & 0.448* &  & 0.917*  &  & 0.626*   \\ \cdashline{1-2}[1pt/2pt]\cdashline{4-4}[1pt/2pt]\cdashline{6-6}[1pt/2pt]
-			Choose K: Optimize NMI \footnotesize{(max, co-clustering)} & 0.449** &  & 0.906*** &  & 0.612****  \\ 
+			Average of all Clustered Sense Inventories & 0.367 &  & 0.841 &  & 0.569 \\ \cdashline{1-2}[1pt/2pt]\cdashline{4-4}[1pt/2pt]\cdashline{6-6}[1pt/2pt]
+			Max basic (no co-clustering) sense inventory & 0.448* &  & 0.917*  &  & 0.626*   \\ \cdashline{1-2}[1pt/2pt]\cdashline{4-4}[1pt/2pt]\cdashline{6-6}[1pt/2pt]
+			Max co-clustered sense inventory & 0.449** &  & 0.906*** &  & 0.612****  \\ 
 		\end{tabular}
 	}
 	\caption{\footnotesize{Substitutablity (NMI) of resulting sense inventories, and GAP scores of the unfiltered and best sense-filtered rankings produced by the Syn.VSM and AddCos models, for the SemEval07 annotated dataset. Configurations for the best-performing sense inventories were: * Min PPDB Score 2.31, cluster PP's only, use PP-PP mask; ** Min PPDB Score 2.54, co-clustering, use PP-SYN mask only; *** Min PPDB Score 2.54, co-clustering, use PP-SYN mask only; **** Min PPDB Score 2.31, co-clustering, use PP-SYN mask only.}}
 	\label{tab:GAP-semeval}
 \end{table*}
 
-Finally, we wish to estimate the impact of the NMI-based  optimization procedure (Section \ref{optimk}) on the quality of the senses used for filtering. 
+Finally, we wish to estimate the impact of the NMI-based  optimization procedure (Section \ref{optimk}) on the quality of the senses used for filtering. We compare the performance of the optimized CoInCo sense inventory, where the number of clusters, \textit{k}, for a target word is defined through NMI optimization (called `Choose-K: Optimize NMI'), to an inventory induced from CoInCo where \textit{k} equals the number of synsets available for the target word in WordNet (called `Choose-K: \#WN Synsets). 
+
 
 \subsection{Substitution metrics}
 
@@ -369,10 +374,6 @@ For choosing the cluster that best fits a context, we used an oracle experiment 
 Our sense filtering mechanism can be applied to the output of any vector-space substitution model at a post-processing step. In future work, we intend to experiment with models that account for senses during embedding learning. The models of \newcite{huang-EtAl:2012:ACL20122} and \newcite{li-jurafsky:2015:EMNLP} learn multi-prototype, or sense-specific, embedding representations and are able to choose the best-fitted ones for words in context. These models have up to now been tested in several NLP tasks but have not yet been applied to lexical substitution. We will experiment with using the embeddings chosen by these models for specific word instances for ranking candidate substitutes in context. The comparison with the results presented in this paper will show whether it is preferable to account for senses before or after actual lexical substitution.
 
 \section*{Acknowledgments}
-
-This material is based in part on research sponsored by DARPA under grant number FA8750-13-2-0017 (the DEFT program). The U.S. Government is authorized to reproduce and distribute reprints for Governmental purposes. The views and conclusions contained in this publication are those of the authors and should not be interpreted as representing official policies or endorsements of DARPA and the U.S. Government.
-
-This work has also been supported by the French National Research Agency under project ANR-16-CE33-0013.
 
 We would like to thank our anonymous reviewers for their thoughtful and helpful comments.
 
